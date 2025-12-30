@@ -15,3 +15,23 @@ vim.opt.writeany = true
 -- 4. Automatically reload the file if it changed outside of Vim
 -- (Prevents the "File changed on disk" prompt)
 vim.opt.autoread = true
+
+-- Fix for SMB/Network Mounts
+vim.opt.backup = false      -- Don't create backup files (causes sync issues)
+vim.opt.writebackup = false -- Don't backup before overwriting
+
+-- Force Neovim to ignore timestamp checks on save
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  callback = function()
+    vim.opt.eventignore:append("FileChangedShellPost")
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+  callback = function()
+    vim.opt.eventignore:remove("FileChangedShellPost")
+  end,
+})
+
+-- enable this if I still get overwrite messages
+-- vim.opt.fsync = false
