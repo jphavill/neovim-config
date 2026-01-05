@@ -1,5 +1,8 @@
 -- Options are automatically loaded before lazy.nvim startup
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
+
+
+-- Fix SMB conflicts
 vim.opt.swapfile = false
 -- 1. Disable the confirmation dialog for many operations
 vim.opt.confirm = false
@@ -34,4 +37,4 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 })
 
 -- enable this if I still get overwrite messages
--- vim.opt.fsync = false
+vim.opt.fsync = false
