@@ -1,7 +1,6 @@
 -- Options are automatically loaded before lazy.nvim startup
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
-
-
+vim.opt.clipboard = "unnamedplus"
 -- Fix SMB conflicts
 vim.opt.swapfile = false
 -- 1. Disable the confirmation dialog for many operations
@@ -20,7 +19,7 @@ vim.opt.writeany = true
 vim.opt.autoread = true
 
 -- Fix for SMB/Network Mounts
-vim.opt.backup = false      -- Don't create backup files (causes sync issues)
+vim.opt.backup = false -- Don't create backup files (causes sync issues)
 vim.opt.writebackup = false -- Don't backup before overwriting
 
 -- Force Neovim to ignore timestamp checks on save
@@ -38,3 +37,6 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 
 -- enable this if I still get overwrite messages
 vim.opt.fsync = false
+
+-- disable for smb
+vim.opt.backupcopy = "yes"
